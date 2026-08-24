@@ -3,12 +3,13 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'),
+  metadataBase: new URL('https://mi-portafolio-five-beta.vercel.app'),
   title: "Oswaldo Dávila | Desarrollador Web & Datos",
   description: "Desarrollador Web y Especialista en Ciencia de Datos. Construyo soluciones web escalables y analizo datos para negocios.",
   openGraph: {
     title: "Oswaldo Dávila | Portfolio",
     description: "Desarrollador Web y Especialista en Ciencia de Datos. Construyo soluciones web escalables.",
+    url: "https://mi-portafolio-five-beta.vercel.app",
     siteName: "Oswaldo Dávila",
     locale: "es_MX",
     type: "website",
