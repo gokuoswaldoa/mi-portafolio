@@ -4,13 +4,13 @@ import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 
-export default function Home() {
+export default function EmpresasPage() {
   return (
     <main className="bg-black text-white">
       <Hero />
-      <About variant="business" />
+      <About variant="tech" />
       <Services />
-      <Projects variant="business" />
+      <Projects variant="tech" />
       <Contact />
     </main>
   );

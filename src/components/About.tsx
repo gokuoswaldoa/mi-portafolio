@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
 import { SiJavascript, SiNextdotjs, SiTailwindcss, SiMongodb } from 'react-icons/si';
+import { TrendingUp, Clock, ShieldCheck, Smartphone } from 'lucide-react';
 
 const techStack = [
   { name: "HTML", icon: FaHtml5, color: "text-[#E34F26]" },
@@ -16,7 +17,18 @@ const techStack = [
   { name: "Git", icon: FaGitAlt, color: "text-[#F05032]" },
 ];
 
-export default function About() {
+const businessBenefits = [
+  { name: "MÁS VENTAS", desc: "Diseños optimizados para convertir visitantes en clientes.", icon: TrendingUp, color: "text-green-400" },
+  { name: "AHORRO DE TIEMPO", desc: "Automatiza reservaciones, inventarios y atención.", icon: Clock, color: "text-cyan-400" },
+  { name: "100% MÓVIL", desc: "Tus clientes te verán perfecto desde cualquier celular.", icon: Smartphone, color: "text-pink-400" },
+  { name: "CONFIANZA", desc: "Proyecta una imagen profesional y de alta gama.", icon: ShieldCheck, color: "text-purple-400" },
+];
+
+interface AboutProps {
+  variant?: "business" | "tech";
+}
+
+export default function About({ variant = "business" }: AboutProps) {
   return (
     <section id="sobre-mi" className="py-24 md:py-32 px-4 bg-black relative">
       <div className="max-w-6xl mx-auto">
@@ -49,23 +61,42 @@ export default function About() {
             </div>
             
             <div className="w-full lg:w-1/2">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">
-                {techStack.map((tech, idx) => (
-                  <motion.div 
-                    key={tech.name} 
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: idx * 0.1 }}
-                    className="relative p-[2px] bg-gradient-to-br from-cyan-400 to-pink-500 rounded-xl group hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300"
-                  >
-                    <div className="flex flex-col items-center justify-center bg-[#0a0a0a] rounded-xl p-6 h-full transition-colors duration-300 group-hover:bg-[#111]">
-                      <tech.icon className={`w-12 h-12 mb-4 ${tech.color} drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:scale-110 transition-transform duration-300`} />
-                      <span className="text-white text-xs font-bold uppercase tracking-widest">{tech.name}</span>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+              {variant === "tech" ? (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">
+                  {techStack.map((tech, idx) => (
+                    <motion.div 
+                      key={tech.name} 
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: idx * 0.1 }}
+                      className="relative p-[2px] bg-gradient-to-br from-cyan-400 to-pink-500 rounded-xl group hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300"
+                    >
+                      <div className="flex flex-col items-center justify-center bg-[#0a0a0a] rounded-xl p-6 h-full transition-colors duration-300 group-hover:bg-[#111]">
+                        <tech.icon className={`w-12 h-12 mb-4 ${tech.color} drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:scale-110 transition-transform duration-300`} />
+                        <span className="text-white text-xs font-bold uppercase tracking-widest">{tech.name}</span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+                  {businessBenefits.map((benefit, idx) => (
+                    <motion.div 
+                      key={benefit.name} 
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: idx * 0.1 }}
+                      className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 hover:border-cyan-500/50 transition-colors duration-300"
+                    >
+                      <benefit.icon className={`w-10 h-10 mb-4 ${benefit.color}`} />
+                      <h3 className="text-white font-bold text-lg mb-2 tracking-wide">{benefit.name}</h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">{benefit.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </motion.div>
