@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, FileText, Instagram } from "lucide-react";
+import { Mail, Phone, FileText } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
 
 export default function Contact() {
   return (
@@ -60,7 +61,7 @@ export default function Contact() {
                 className="p-3 bg-gray-900 rounded-full text-gray-400 hover:text-pink-500 hover:bg-gray-800 transition-colors group"
                 aria-label="Instagram"
               >
-                <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <FaInstagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </div>
