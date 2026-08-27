@@ -102,10 +102,12 @@ export default function Projects({ variant = "business" }: ProjectsProps) {
                   </ul>
                   
                   <div className="flex items-center gap-6">
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-white hover:text-cyan-400 transition-colors flex items-center gap-2 font-medium">
-                      <ExternalLink className="w-5 h-5" />
-                      Ver Demo
-                    </a>
+                    {project.link !== "#" && (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-white hover:text-cyan-400 transition-colors flex items-center gap-2 font-medium">
+                        <ExternalLink className="w-5 h-5" />
+                        Ver Demo
+                      </a>
+                    )}
                   </div>
                 </div>
 
